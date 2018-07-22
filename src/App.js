@@ -75,6 +75,13 @@ changeStatus=(status)=>{
   this.setState({status})
 }
 
+changeContent = (newId,newContent) => {
+  console.log(newContent)
+  let todos = this.deepCopy(this.state.todos);
+  todos.find(item => item.id === newId).content = newContent; 
+  this.setState({todos});
+}
+
 
   render() {
     console.log(this.state.todos)
@@ -96,6 +103,7 @@ changeStatus=(status)=>{
                   <ShowItem 
                   todos={item}
                   toggleActiveHandler={this.toggleActive}
+                  updateItemContent={this.changeContent}
                   />
                 )
               }
